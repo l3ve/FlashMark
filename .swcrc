@@ -1,0 +1,18 @@
+{
+    "jsc": {
+        "parser": {
+            "syntax": "typescript",
+            "tsx": true,
+            "dynamicImport": true,
+            "decorators": true,
+            "esModuleInterop": true
+        },
+        "transform": {
+            "decoratorMetadata": true
+        },
+        "target": "es2022"
+    },
+    "module": {
+        "type": "es6"
+    }
+}

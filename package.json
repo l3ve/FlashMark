@@ -1,0 +1,15 @@
+{
+  "name": "mark",
+  "scripts": {
+    "dev": "spack && yarn tauri dev"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.0.1"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.210",
+    "@tauri-apps/cli": "^1.0.2",
+    "chokidar": "^3.5.3"
+  }
+}
