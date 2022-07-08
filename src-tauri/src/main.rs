@@ -28,7 +28,7 @@ fn main() {
         .setup(move |app| {
             app.get_window("main").unwrap().open_devtools();
             app.tray_handle()
-                .set_icon(Icon::Raw(include_bytes!("../icons/FlashMark.png")))
+                .set_icon(Icon::Raw(include_bytes!("../icons/FlashMark.ico").to_vec()))
                 .unwrap();
             Notification::new(&identifier)
                 .title("Tauri")
