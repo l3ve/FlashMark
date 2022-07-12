@@ -4,7 +4,7 @@
 )]
 
 use tauri::{
-    api::notification::Notification, CustomMenuItem, Icon, Manager, SystemTray, SystemTrayMenu,
+    CustomMenuItem, Icon, Manager, SystemTray, SystemTrayMenu,
     SystemTrayMenuItem,
 };
 
@@ -15,7 +15,7 @@ fn dosomething(name: &str) -> String {
 
 fn main() {
     let context = tauri::generate_context!("./tauri.conf.json");
-    let identifier = context.config().tauri.bundle.identifier.clone();
+
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let hide = CustomMenuItem::new("hide".to_string(), "Hide");
     let tray_menu = SystemTrayMenu::new()
@@ -26,16 +26,7 @@ fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![dosomething])
         .setup(move |app| {
-            app.get_window("main").unwrap().open_devtools();
-            app.tray_handle()
-                .set_icon(Icon::Raw(include_bytes!("../icons/FlashMark.ico").to_vec()))
-                .unwrap();
-            Notification::new(&identifier)
-                .title("Tauri")
-                .body("Tauri is awesome!")
-                .show()
-                .unwrap();
-
+            // app.get_window("main").unwrap().open_devtools();
             Ok(())
         })
         .system_tray(tray)

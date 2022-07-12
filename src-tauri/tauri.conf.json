@@ -12,9 +12,8 @@
     "version": "0.1.0"
   },
   "tauri": {
-    "systemTray":{
-      "iconPath": "icons/FlashMark.png",
-      "iconAsTemplate":true
+    "systemTray": {
+      "iconPath": "icons/template.png"
     },
     "allowlist": {
       "all": true
@@ -28,11 +27,7 @@
       },
       "externalBin": [],
       "icon": [
-        "icons/FlashMark.png",
-        "icons/FlashMark.png",
-        "icons/FlashMark.png",
-        "icons/FlashMark.icns",
-        "icons/FlashMark.ico"
+        "icons/FlashMark.png"
       ],
       "identifier": "com.tauri.dev",
       "longDescription": "",
@@ -60,10 +55,11 @@
     },
     "windows": [
       {
+        "skipTaskbar":true,
         "fullscreen": false,
         "height": 100,
         "resizable": true,
-        "title": "mark",
+        "title": "FlashMark",
         "width": 300
       }
     ]
