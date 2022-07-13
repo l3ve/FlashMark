@@ -12,6 +12,7 @@
     "version": "0.1.0"
   },
   "tauri": {
+    "macOSPrivateApi": true,
     "systemTray": {
       "iconPath": "icons/template.png"
     },
@@ -27,9 +28,9 @@
       },
       "externalBin": [],
       "icon": [
-        "icons/FlashMark.png"
+        "icons/flashMark.png"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.tauri.flashmark",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -55,12 +56,17 @@
     },
     "windows": [
       {
-        "skipTaskbar":true,
+        "label": "main",
+        "skipTaskbar": true,
         "fullscreen": false,
-        "height": 100,
+        "center": true,
+        "visible": false,
+        "height": 500,
+        "width": 300,
         "resizable": true,
         "title": "FlashMark",
-        "width": 300
+        "focus": false,
+        "transparent": true
       }
     ]
   }

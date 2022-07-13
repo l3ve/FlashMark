@@ -1,9 +1,4 @@
-#![cfg_attr(
-    all(not(debug_assertions), target_os = "windows"),
-    windows_subsystem = "windows"
-)]
-
-use tauri::{Manager, RunEvent};
+use tauri::{Manager, RunEvent, SystemTrayEvent, WindowEvent};
 
 mod ipc;
 mod menu;
@@ -17,16 +12,47 @@ fn main() {
             ipc::perform_request
         ])
         .system_tray(menu::get_tray_menu())
+        .on_system_tray_event(|app, event| match event {
+            SystemTrayEvent::LeftClick { position, .. } => {
+                let window = app.get_window("main").unwrap();
+                window.set_position(position).unwrap();
+            }
+            SystemTrayEvent::MenuItemClick { id, .. } => match id.as_str() {
+                "quit" => {
+                    std::process::exit(0);
+                }
+                "add" => {
+                    let window = app.get_window("main").unwrap();
+                    window.show().unwrap();
+                    window.set_focus().unwrap();
+                    window.set_always_on_top(true).unwrap();
+                }
+                _ => {}
+            },
+            _ => {}
+        })
         .build(context)
         .expect("error while running tauri application");
 
-    app.set_activation_policy(tauri::ActivationPolicy::Regular);
-    // app.get_window("main").unwrap().open_devtools();
+    app.set_activation_policy(tauri::ActivationPolicy::Accessory);
+    app.get_window("main").unwrap().open_devtools();
+    let window = app.get_window("main").unwrap();
+    window.hide().unwrap();
+    window.set_decorations(false).unwrap();
 
     app.run(|app_handle, e| match e {
-        RunEvent::ExitRequested { api, .. } => {
-            api.prevent_exit();
-        }
+        RunEvent::WindowEvent { label, event, .. } => match event {
+            WindowEvent::CloseRequested { api, .. } => {
+                app_handle.get_window(&label).unwrap().hide().unwrap();
+                api.prevent_close();
+            }
+            WindowEvent::Focused(focused) => {
+                if !focused {
+                    app_handle.get_window(&label).unwrap().hide().unwrap();
+                }
+            }
+            _ => {}
+        },
         _ => {}
     })
 }
