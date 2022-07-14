@@ -1,10 +1,16 @@
 {
   "name": "mark",
   "scripts": {
-    "dev": "spack && yarn tauri dev"
+    "dev": "spack && yarn tauri dev",
+    "w": "spack"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.0.1"
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@tauri-apps/api": "^1.0.1",
+    "@types/react": "^18.0.15",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.57",

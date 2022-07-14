@@ -4,15 +4,27 @@
             "syntax": "typescript",
             "tsx": true,
             "dynamicImport": true,
+            "exportDefaultFrom": false,
             "decorators": true,
             "esModuleInterop": true
         },
+        "loose": true,
         "transform": {
-            "decoratorMetadata": true
+            "legacyDecorator": true,
+            "decoratorMetadata": true,
+            "react": {
+                "runtime": "automatic"
+            }
         },
-        "target": "es2022"
+        "target": "es2015"
     },
     "module": {
-        "type": "es6"
+        "type": "es6",
+        "globals": {},
+        // These are defaults.
+        "strict": false,
+        "strictMode": true,
+        "lazy": false,
+        "noInterop": false
     }
 }

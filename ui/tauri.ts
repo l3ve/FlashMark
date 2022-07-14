@@ -1,5 +1,5 @@
-import type apptype from "../node_modules/@tauri-apps/api/app";
-import type tauritype from "../node_modules/@tauri-apps/api/tauri";
+import type apptype from "@tauri-apps/api/app";
+import type tauritype from "@tauri-apps/api/tauri";
 
 declare global {
   interface Window {
