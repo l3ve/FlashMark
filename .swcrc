@@ -17,14 +17,5 @@
             }
         },
         "target": "es2015"
-    },
-    "module": {
-        "type": "es6",
-        "globals": {},
-        // These are defaults.
-        "strict": false,
-        "strictMode": true,
-        "lazy": false,
-        "noInterop": false
     }
 }

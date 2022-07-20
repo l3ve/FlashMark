@@ -3,6 +3,7 @@ use tauri::{Manager, RunEvent, SystemTrayEvent, WindowEvent};
 mod ipc;
 mod menu;
 
+
 fn main() {
     let context = tauri::generate_context!("./tauri.conf.json");
 
@@ -34,10 +35,13 @@ fn main() {
         .build(context)
         .expect("error while running tauri application");
 
+    // 隐藏 dock 里的图标
     app.set_activation_policy(tauri::ActivationPolicy::Accessory);
-    app.get_window("main").unwrap().open_devtools();
     let window = app.get_window("main").unwrap();
+
+    window.open_devtools();
     window.hide().unwrap();
+    // 无边框模式
     window.set_decorations(false).unwrap();
 
     app.run(|app_handle, e| match e {

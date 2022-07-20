@@ -1,14 +1,14 @@
 // import styled from "@emotion/styled";
-import React, { useEffect } from "react";
+import * as React from "react";
+import { useEffect } from "react";
 import { createRoot } from "react-dom/client";
-// import { AddBtn } from "./add";
+import { AddBtn } from "./add";
 
 function Box() {
   useEffect(() => {
-    console.log("333");
+    console.log("111");
   }, []);
-  return <>Flash Mark!</>;
-  // return <AddBtn />;
+  return <AddBtn />;
 }
 
 let body = document.getElementById("flash-mark");
