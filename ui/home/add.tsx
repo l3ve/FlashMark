@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { tauri, dialog } from "./tauri";
+import { tauri, dialog } from "../tauri";
 
 let Btn = styled.div`
   position: absolute;
