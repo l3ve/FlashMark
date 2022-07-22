@@ -59,13 +59,14 @@
         "label": "main",
         "skipTaskbar": true,
         "fullscreen": false,
-        "center": true,
-        "visible": true,
+        "visible": false,
         "height": 500,
         "width": 300,
-        "resizable": true,
+        "decorations": false,
+        "resizable":false,
         "title": "FlashMark",
         "focus": false,
+        "alwaysOnTop": true,
         "transparent": true
       }
     ]
